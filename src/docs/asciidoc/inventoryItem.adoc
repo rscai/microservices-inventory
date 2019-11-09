@@ -1,0 +1,99 @@
+= InventoryItem
+
+== Model
+
+|===
+|Field|Type|Comment
+
+|id
+|String
+|
+
+|productId
+|String
+|product's id
+
+|quantity
+|int
+|
+
+|unitPrice
+|BigDecimal
+|scale 2
+
+|createdAt
+|Date
+|
+
+|updatedAt
+|Date
+|
+|===
+
+== Create
+
+Endpoint `inventoryItems`.
+
+=== Request
+
+include::{snippets}/inventoryItem/create/http-request.adoc[]
+
+==== Request Field
+
+include::{snippets}/inventoryItem/create/request-fields.adoc[]
+
+=== Response
+
+include::{snippets}/inventoryItem/create/http-response.adoc[]
+
+==== Response Field
+
+include::{snippets}/inventoryItem/create/response-fields.adoc[]
+
+== Get One
+
+include::{snippets}/inventoryItem/getOne/path-parameters.adoc[]
+
+=== Request
+
+include::{snippets}/inventoryItem/getOne/http-request.adoc[]
+
+=== Response
+
+include::{snippets}/inventoryItem/getOne/http-response.adoc[]
+
+==== Response Fields
+
+include::{snippets}/inventoryItem/getOne/response-fields.adoc[]
+
+== Update
+
+include::{snippets}/inventoryItem/update/path-parameters.adoc[]
+
+=== Request
+
+include::{snippets}/inventoryItem/update/http-request.adoc[]
+
+==== Request Fields
+
+include::{snippets}/inventoryItem/update/request-fields.adoc[]
+
+=== Response
+
+include::{snippets}/inventoryItem/update/http-response.adoc[]
+
+==== Response Field
+
+include::{snippets}/inventoryItem/update/response-fields.adoc[]
+
+== Delete
+
+include::{snippets}/inventoryItem/delete/path-parameters.adoc[]
+
+=== Request
+
+include::{snippets}/inventoryItem/delete/http-request.adoc[]
+
+=== Response
+
+include::{snippets}/inventoryItem/delete/http-response.adoc[]

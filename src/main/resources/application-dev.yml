@@ -1,0 +1,11 @@
+server:
+  port: 8082
+  use-forward-headers: true
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3307/inventory
+    username: test
+    password: passwd
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate.ddl-auto: create-drop
