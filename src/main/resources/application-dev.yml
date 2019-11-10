@@ -8,4 +8,8 @@ spring:
     password: passwd
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
-    hibernate.ddl-auto: create-drop
+    hibernate.ddl-auto: update
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka/

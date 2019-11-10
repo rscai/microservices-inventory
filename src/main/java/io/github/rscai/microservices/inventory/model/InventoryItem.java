@@ -19,7 +19,7 @@ public class InventoryItem {
   @GeneratedValue(generator = "system-uuid")
   @GenericGenerator(name = "system-uuid", strategy = "uuid")
   private String id;
-  @Column(length = 255, nullable = false)
+  @Column(length = 255, nullable = false, unique = true)
   private String productId;
   @Column(nullable = false)
   private int quantity;
