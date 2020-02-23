@@ -1,10 +1,15 @@
 package io.github.rscai.microservices.inventory.repository;
 
 import io.github.rscai.microservices.inventory.model.InventoryItem;
+import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "inventoryItems", path = "inventoryItems")
+
+@Repository
 public interface InventoryItemRepository extends JpaRepository<InventoryItem, String> {
-  
+
+  Page<InventoryItem> findByProductIdIn(List<String> productIds, Pageable pageable);
 }
