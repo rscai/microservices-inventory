@@ -46,6 +46,7 @@ import org.springframework.restdocs.payload.RequestFieldsSnippet;
 import org.springframework.restdocs.payload.ResponseFieldsSnippet;
 import org.springframework.restdocs.request.ParameterDescriptor;
 import org.springframework.restdocs.request.RequestParametersSnippet;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -58,6 +59,8 @@ public class InventoryItemControllerTest {
 
   private static final String ENDPOINT = "/inventoryItems";
   private static final String APPLICATION_HAL = "application/hal+json";
+  private static final String SCOPE_INVENTORY_READ = "SCOPE_inventory.read";
+  private static final String SCOPE_INVENTORY_WRITE = "SCOPE_inventory.write";
   private static final String PRODUCT_ID_A = "productA";
   private static final String PRODUCT_ID_B = "productB";
   private static final String PRODUCT_ID_C = "productC";
@@ -101,6 +104,8 @@ public class InventoryItemControllerTest {
   }
 
   @Test
+  @WithMockUser(username = "inventory_ops", authorities = {SCOPE_INVENTORY_READ,
+      SCOPE_INVENTORY_WRITE})
   public void testCreateAndGet() throws Exception {
     final String productId = "P123456";
     final int quantity = 12;
@@ -141,6 +146,8 @@ public class InventoryItemControllerTest {
   }
 
   @Test
+  @WithMockUser(username = "inventory_ops", authorities = {SCOPE_INVENTORY_READ,
+      SCOPE_INVENTORY_WRITE})
   public void testUpdate() throws Exception {
     final String productId = "P123456";
     final int quantity = 12;
@@ -183,6 +190,8 @@ public class InventoryItemControllerTest {
   }
 
   @Test
+  @WithMockUser(username = "inventory_ops", authorities = {SCOPE_INVENTORY_READ,
+      SCOPE_INVENTORY_WRITE})
   public void testDelete() throws Exception {
     final String productId = "P123456";
     final int quantity = 12;
@@ -211,6 +220,7 @@ public class InventoryItemControllerTest {
   }
 
   @Test
+  @WithMockUser(username = "inventory_read", authorities = {SCOPE_INVENTORY_READ})
   public void testSearchByProductIdIn() throws Exception {
     mvc.perform(get(ENDPOINT
             + "/search/productIdIn?productId={productId1}&productId={productId2}&page={page}&size={size}&sort={sort}",

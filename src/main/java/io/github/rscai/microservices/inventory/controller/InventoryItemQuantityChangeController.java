@@ -12,6 +12,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.hateoas.server.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,8 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("inventoryItemQuantityChanges")
 @ExposesResourceFor(InventoryItemQuantityChange.class)
 public class InventoryItemQuantityChangeController {
+
+  private static final String AUTHORITY_INVENTORY_WRITE = "hasAuthority('SCOPE_inventory.write')";
 
   private final EntityLinks entityLinks;
   @Autowired
@@ -37,6 +40,7 @@ public class InventoryItemQuantityChangeController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
+  @PreAuthorize(AUTHORITY_INVENTORY_WRITE)
   public List<EntityModel<InventoryItemQuantityChange>> create(
       @RequestBody List<InventoryItemQuantityChange> changes) {
     List<EntityModel<InventoryItemQuantityChange>> processedChanges = new ArrayList<>();

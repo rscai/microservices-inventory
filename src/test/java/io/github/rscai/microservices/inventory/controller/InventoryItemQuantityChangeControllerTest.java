@@ -26,6 +26,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -39,6 +40,8 @@ public class InventoryItemQuantityChangeControllerTest {
 
   private static final String COLLECTION_ENDPOINT = "/inventoryItemQuantityChanges";
   private static final String APPLICATION_HAL = "application/hal+json";
+  private static final String SCOPE_INVENTORY_READ = "SCOPE_inventory.read";
+  private static final String SCOPE_INVENTORY_WRITE = "SCOPE_inventory.write";
   private static final String PRODUCT_ID_A = "productA";
   private static final String PRODUCT_ID_B = "productB";
   private static final String PRODUCT_ID_C = "productC";
@@ -84,6 +87,8 @@ public class InventoryItemQuantityChangeControllerTest {
   }
 
   @Test
+  @WithMockUser(username = "inventory_read", authorities = {SCOPE_INVENTORY_READ,
+      SCOPE_INVENTORY_WRITE})
   public void testCreateQuantityChange() throws Exception {
     InventoryItemQuantityChange changeA = new InventoryItemQuantityChange(
         String.format("inventorytest-order12345-%s", itemIdA), itemIdA, -10, new Date());

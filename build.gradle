@@ -2,7 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.2.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
-    //id "io.freefair.lombok" version "4.1.6"
+    id "io.freefair.lombok" version "4.1.6"
     id "org.sonarqube" version "2.7.1"
     id 'jacoco'
     id 'org.asciidoctor.convert' version '1.5.3'
@@ -29,8 +29,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    compileOnly 'org.projectlombok:lombok:1.18.10'
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-oauth2-resource-server'
+    implementation 'org.springframework.security:spring-security-oauth2-jose'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -38,6 +39,7 @@ dependencies {
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testImplementation 'com.h2database:h2'
+    testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
