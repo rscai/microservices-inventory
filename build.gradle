@@ -37,10 +37,8 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testImplementation 'com.h2database:h2'
     testImplementation 'org.springframework.security:spring-security-test'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 dependencyManagement {
